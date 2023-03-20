@@ -1,19 +1,23 @@
-{% extends 'book_outlet/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
 All Books
 {% endblock %}
 
 {% block content %}
-    <ul>
-        {% for book in books%}
-        <li><a href="{{ book.get_absolute_url }}">Title: {{book.title}}</a> (Rating: {{book.rating}})</li>
-        {% endfor %}
-    </ul>
 
+    <section>
+        <ul>
+            <h3> List of Registered Books: </h3>
+            {% for book in books%}
+            <li><a href="{{ book.get_absolute_url }}">Title: {{book.title}}</a> (Rating: {{book.rating}})</li>
+            {% endfor %}
+        </ul>
+    </section>
     <hr>
-
-    <p> Total Number Of Books: {{num_books}} </p>
-    <p> Average Rating: {{average_rating.rating__avg}} </p>
-
+    <section>
+        <h3> Statistics: </h3>
+        <p> Total Number Of Books: {{num_books}} </p>
+        <p> Average Rating: {{average_rating.rating__avg|floatformat:"-1"}} </p>
+    </section>
 {% endblock %}
