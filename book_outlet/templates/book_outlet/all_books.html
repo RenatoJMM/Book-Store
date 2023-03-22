@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+
+    {% block title %}
+        All Books
+    {% endblock  %}
+
+    {% block content %}
+        <section>
+            <ul>
+                <h1> List of Registered Books: </h1>
+                {% for book in books%}
+                <li><a href="{{ book.get_absolute_url }}">Title: {{book.title}}</a> (Rating: {{book.rating}})</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <hr>
+        
+        <section>
+            <h3> Statistics: </h3>
+            <p> Total Number Of Books: {{num_books}} </p>
+            <p> Average Rating: {{statistics.rating__avg|floatformat:"-1"}} </p>
+        </section>
+        
+    {% endblock  %}

@@ -10,6 +10,9 @@
 <body>
     <header>
         <h2><a href=" {% url "index" %} "> Home </a></h2>
+        <nav>
+            <a href ="{% url "all-books"%}"> All Books </a>
+        </nav>
     </header>
 
     {% block content %}{% endblock %}

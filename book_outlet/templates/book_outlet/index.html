@@ -6,38 +6,18 @@ All Books
 
 {% block content %}
 
-
     <form action ="/" method = "POST">
         {% csrf_token %}
 
-        {% comment %} {% for fields in form %} {% endcomment %}
+        {% for field in form %} 
             <div>
-                {{form}}
-                {% comment %} {{fields.title}}
-                {{fields.rating}}
-                {{fields.author}}
-                {{fields.is_bestselling}}
-                {{fields.published_countries}} {% endcomment %}
+                {{field.label_tag}}
+                {{field}}
+                {{ field.errors}}
             </div>
-        {% comment %} {% endfor %} {% endcomment %}
+        {% endfor %}
 
         <button type="submit"> Send </button>
     </form>
 
-    <hr>
-
-    <section>
-        <ul>
-            <h3> List of Registered Books: </h3>
-            {% for book in books%}
-            <li><a href="{{ book.get_absolute_url }}">Title: {{book.title}}</a> (Rating: {{book.rating}})</li>
-            {% endfor %}
-        </ul>
-    </section>
-    <hr>
-    <section>
-        <h3> Statistics: </h3>
-        <p> Total Number Of Books: {{num_books}} </p>
-        <p> Average Rating: {{average_rating.rating__avg|floatformat:"-1"}} </p>
-    </section>
 {% endblock %}
